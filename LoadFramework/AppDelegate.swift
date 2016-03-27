@@ -76,48 +76,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
     func openCallById(callId: String) {
         if nil != loggedin{
             if let VC = getTopViewController() {
-                showSpinner("Initializing Session")
                 dispatch_async(dispatch_get_main_queue()){
                     AppManager.sharedInstance.handleSessionRequest(VC, sessionId: callId, capabilities: ["video_enabled": true, "ask_for_video": true], resources: nil)
                 }
             }
-//            let rootViewController = self.window!.rootViewController
-//            let mainStoryboard = rootViewController?.storyboard
-//            let introVC = mainStoryboard?.instantiateViewControllerWithIdentifier("IntroViewController") as! IntroViewController
-
-            
-//            CallUtils.connectToCallSessionById(callId, delegateViewController: callViewController, completion: { (result) -> Void in
-//                ViewUtils.stopGlobalLoader()
-//                if nil != result["title"] as? String {
-//                    if let currentTopView = ViewUtils.getTopViewController(){
-//                        CallUtils.rootViewController = self.homeVC
-//                        if LoginUtils.isLoggedIn{
-//                            dispatch_async(dispatch_get_main_queue()){
-//                                if showTimer {
-//                                    ViewUtils.slideInCallAlert(currentTopView, call: result)
-//                                } else {
-//                                    ViewUtils.showIncomingCall()
-//                                }
-//                            }
-//                            
-//                        } else if let view = currentTopView as? LaunchViewController{
-//                            dispatch_async(dispatch_get_main_queue()){
-//                                view.introViewController?.connectingCallView.hidden = false
-//                                view.introViewController?.connectingActivity.startAnimating()
-//                            }
-//                        } else if let view = currentTopView as? IntroViewController{
-//                            dispatch_async(dispatch_get_main_queue()){
-//                                view.connectingCallView.hidden = false
-//                                view.connectingActivity.startAnimating()
-//                            }
-//                        }
-//                    }
-//                } else{
-//                    dispatch_async(dispatch_get_main_queue()){
-//                        ViewUtils.showSimpleError("The Call ID you entered does not exist")
-//                    }
-//                }
-//            })
         } else {
             notificationCallId = callId
         }

@@ -94,40 +94,12 @@ struct LoginUtils {
             if let vc = getTopViewController() {
                 showAlert(vc, title: "Login Error", message: "Your username and password do not match")
             }
-
-//            let noCallAlert = UIAlertView()
-//            noCallAlert.title = "Login Error"
-//            noCallAlert.message = "Your username and password do not match"
-//            noCallAlert.addButtonWithTitle("Ok")
-//            noCallAlert.show()
         }
     }
     
     static func login(username: String, password: String, sender: UIViewController, successSegue: String, completion: (result: Bool) -> Void) -> Void{
         NSUserDefaults.standardUserDefaults().setObject(["username": username, "password": password], forKey: "credentials")
         NSUserDefaults.standardUserDefaults().synchronize()
-        
-//        ServerAPI.login(username, password: password, completion: {result -> Void in
-//            if (result) {
-//                ServerAPI.getUser({result -> Void in
-//                    if result["type"] as! String == "MEDREP" {
-//                        StorageUtils.saveUserData(result)
-//                        self.isLoggedIn = true
-//                        dispatch_async(dispatch_get_main_queue()){
-//                            sender.performSegueWithIdentifier(successSegue, sender: AnyObject?())
-//                        }
-//                    } else {
-//                        //not a doctor, don't login
-//                        self.showLoginError()
-//                    }
-//                    self.delegate?.loginComplete!()
-//                    completion(result: true)
-//                })
-//            }else {
-//                self.showLoginError()
-//                completion(result: false)
-//            }
-//        })
     }
     
 }

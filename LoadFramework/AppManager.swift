@@ -37,8 +37,6 @@ class AppManager: NSObject {
     }
     
     // MARK: SDK methods
-    
-    // TODO: change is rep to false
     func handleSessionRequest(currentVC: UIViewController, sessionId: String, capabilities: [String: AnyObject], isRep: Bool = false, resources: Array<Dictionary<String, AnyObject>>?) {
         
         let val = SeegnatureActions()

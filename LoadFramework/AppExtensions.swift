@@ -105,12 +105,12 @@ func uicolorFromHex(rgbValue:UInt32)->UIColor{
     return UIColor(red:red, green:green, blue:blue, alpha:1.0)
 }
 
-func showAlert(currentVC: UIViewController, title: String, message: String) {
+func showAlert(currentVC: UIViewController, title: String = "Error", message: String) {
     if let topVC = getTopViewController() {
         if topVC is UIAlertController {
             return
         } else {
-            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
             
             let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
                 print("OK button pressed");

@@ -44,7 +44,8 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.openCallScreen("1763", resources: nil)
+//        self.openCallScreen("1763", resources: nil)
+//        self.openCallScreen("392", resources: nil)
     }
     
     func closeKeyboard(){
@@ -266,25 +267,6 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
             appDelegate.window?.rootViewController = self
         }
-        
-//        if let callViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RepCallNewViewController") as? RepCallNewViewController {
-//            CallUtils.rootViewController = self
-//            CallUtils.callInProgress = true
-//            CallUtils.connectToCallSessionById(callId, delegateViewController: callViewController, completion: { (result) -> Void in
-//                if let vc = CallUtils.getRepCallViewController() {
-//                    if resources != nil {
-//                        vc.resources = resources
-//                    } else if let res = result["related_resource"] as? Dictionary<String, AnyObject>{
-//                        vc.resources = [res]
-//                    }
-//                    vc.sessionNumber = 0
-//                    CallUtils.rootViewController  = self
-//                    self.presentViewController(vc, animated: true, completion: {
-//                        self.restForm()
-//                    })
-//                }
-//            })
-//        }
     }
     
     @IBAction func startSession(sender: AnyObject) {

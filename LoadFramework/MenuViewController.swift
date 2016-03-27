@@ -197,7 +197,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else if (index == 1){
             seegnatureManager.logout() {result -> Void in
                 AppManager.sharedInstance.cleanUserData()
-                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("introViewController") as! IntroViewController
+                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("IntroViewController") as! IntroViewController
                 self.presentViewController(vc, animated: true, completion: nil)
             }
         } else {

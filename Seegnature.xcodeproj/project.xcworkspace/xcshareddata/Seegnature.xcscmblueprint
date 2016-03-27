@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0AD76CEDB2DCD9FC865BF9EDAB5E4E2F1BB3C5B6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "53F8E46FA6C00A6551FF14BB7D6095FF3D4B052B" : 0,
+    "0AD76CEDB2DCD9FC865BF9EDAB5E4E2F1BB3C5B6" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8BF58A29-5B9A-46CA-B6AE-32E0EA980EB0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "53F8E46FA6C00A6551FF14BB7D6095FF3D4B052B" : "LoadFramework\/SeegnatureSDK\/",
+    "0AD76CEDB2DCD9FC865BF9EDAB5E4E2F1BB3C5B6" : "LoadFramework\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Seegnature",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Seegnature.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Erez-Panda\/Seegnature-ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0AD76CEDB2DCD9FC865BF9EDAB5E4E2F1BB3C5B6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Erez-Panda\/SeegnatureSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "53F8E46FA6C00A6551FF14BB7D6095FF3D4B052B"
+    }
+  ]
+}

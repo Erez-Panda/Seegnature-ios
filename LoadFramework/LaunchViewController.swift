@@ -30,10 +30,7 @@ class LaunchViewController: PortraitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO:
-        //        if (!NetworkUtils.isConnectedToNetwork()){
-        //            ViewUtils.showSimpleError("This application requiers internet connection. Please connect to the internet and reopen application")
-        //        }
+
         let defaultUser = NSUserDefaults.standardUserDefaults()
         if let credentials : AnyObject = defaultUser.objectForKey("credentials") {
             LoginUtils.authenticateUser({ (result) -> Void in
@@ -63,6 +60,11 @@ class LaunchViewController: PortraitViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if (!Reachability.isConnectedToNetwork()){
+            showAlert(self, title: "Connectivity Error", message: "This application requiers internet connection. Please connect to the internet and reopen application")
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -142,27 +142,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func forgotPassword(sender: AnyObject) {
         if (isValidEmail(userEmail.text!)){
-//            self.activityIndicatorView.startAnimating()
-//            ServerAPI.resetUserPassword(["email": userEmail.text!], completion: { (result) -> Void in
-//                
-//                if let error = result["error"] as? String {
-//                    dispatch_async(dispatch_get_main_queue()){
-//                        self.activityIndicatorView.stopAnimating()
-//                        ViewUtils.showSimpleError(error)
-//                        
-//                    }
-//                } else {
-//                    dispatch_async(dispatch_get_main_queue()){
-//                        self.activityIndicatorView.stopAnimating()
-//                        let alert = UIAlertView()
-//                        alert.title = "Reset password email has been sent"
-//                        alert.message = "Please follow email instructions to reset your password"
-//                        alert.addButtonWithTitle("Ok")
-//                        alert.show()
-//                    }
-//                }
-//            })
-            
+            seegnatureManager.resetUserPassword(["email": userEmail.text!], completion: { (result) -> Void in
+                if let error = result["error"] as? String {
+                    dispatch_async(dispatch_get_main_queue()){
+                        print(error)
+                    }
+                } else {
+                    dispatch_async(dispatch_get_main_queue()){
+                        showAlert(self, title: "Reset password email has been sent", message: "Please follow email instructions to reset your password")
+                    }
+                }
+            })
         } else {
             showAlert(self, title: "Missing Email", message: "Please enter your email in the \"Email\" field")
         }
