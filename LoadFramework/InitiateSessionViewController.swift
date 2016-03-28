@@ -161,6 +161,7 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
         uploadButton.setTitle("Document", forState: UIControlState.Normal)
         uploadButton.setTitleColor(uicolorFromHex(0xD0D0D0), forState: UIControlState.Normal)
         self.statusLabel.hidden = true
+        self.sessionId.text = ""
     }
     
     func validateForm() -> Bool{
@@ -253,10 +254,10 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
     }
     
     func openCallScreen(callId: String, resources: Array<Dictionary<String, AnyObject>>?){
-        dispatch_async(dispatch_get_main_queue()){
-            self.statusLabel.text = "opening call.."
-            self.statusLabel.hidden = false
-        }
+//        dispatch_async(dispatch_get_main_queue()){
+//            self.statusLabel.text = "opening call.."
+//            self.statusLabel.hidden = false
+//        }
         
         let defaultCapabilities = ["video_enabled": true, "ask_for_video": true]
         
