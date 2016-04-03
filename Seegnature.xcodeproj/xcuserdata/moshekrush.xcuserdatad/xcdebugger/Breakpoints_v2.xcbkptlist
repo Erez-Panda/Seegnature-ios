@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeegnatureSDK/SeegnatureSDK/ServerAPI.swift"
-            timestampString = "481304936.680549"
+            timestampString = "481384174.341723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "getArrayResult(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeegnatureSDK/SeegnatureSDK/ServerAPI.swift"
-            timestampString = "481305205.280323"
+            timestampString = "481384176.064485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "getArrayResult(_:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "getDictionaryResult(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
