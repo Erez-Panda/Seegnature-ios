@@ -21,9 +21,10 @@ class LaunchViewController: PortraitViewController {
     func showIntro(){
         dispatch_async(dispatch_get_main_queue()){
             self.introViewController = self.storyboard?.instantiateViewControllerWithIdentifier("IntroViewController") as? IntroViewController
-            self.addChildViewController(self.introViewController!)
-            self.view.addSubview(self.introViewController!.view)
-            self.introViewController!.didMoveToParentViewController(self)
+            self.presentViewController(self.introViewController!, animated: true, completion: nil)
+//            self.addChildViewController(self.introViewController!)
+//            self.view.addSubview(self.introViewController!.view)
+//            self.introViewController!.didMoveToParentViewController(self)
         }
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "LoginFailed", object: nil))
     }

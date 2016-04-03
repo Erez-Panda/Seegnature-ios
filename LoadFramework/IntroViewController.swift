@@ -29,6 +29,8 @@ class IntroViewController: UIViewController {
         setBordersForTextField(self.loginButton, borderWidth: 1.0)
         
         setLabelsSize()
+        
+        addScreenRotationNotification()
 
     }
     
@@ -56,6 +58,24 @@ class IntroViewController: UIViewController {
         self.view.bringSubviewToFront(self.titleTextView)
         
         seegnatureLabel.attributedText = getAttrText(" Seegnature ", color: UIColor.whiteColor(), size: 42.0, fontName:"OpenSans-Semibold")
+    }
+    
+    
+    
+    // MARK: screen rotation
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        closeKeyboard()
+    }
+    func addScreenRotationNotification() {
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "screenRotated", name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    func screenRotated() {
+        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: Selector("rotateScreen"), userInfo: AnyObject?(), repeats: false)
+    }
+    
+    func rotateScreen() {
+//        self.callIdTextField.becomeFirstResponder()
     }
     
     // MARK: textfield methods
@@ -92,6 +112,7 @@ class IntroViewController: UIViewController {
         })
         
     }
+    
     func keyboardWillHide(){
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.view.frame.origin.y  = 0.0

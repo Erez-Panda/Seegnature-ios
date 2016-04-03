@@ -25,38 +25,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeegnatureSDK/SeegnatureSDK/Views/SessionView.swift"
-            timestampString = "480859653.164031"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "886"
-            endingLineNumber = "886"
-            landmarkName = "touchesMoved(_:withEvent:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SeegnatureSDK/SeegnatureSDK/Views/SessionView.swift"
-            timestampString = "480859653.164031"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "883"
-            endingLineNumber = "883"
-            landmarkName = "touchesMoved(_:withEvent:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SeegnatureSDK/SeegnatureSDK/Session.swift"
             timestampString = "480859537.69912"
             startingColumnNumber = "9223372036854775807"
@@ -74,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeegnatureSDK/SeegnatureSDK/Views/SessionView.swift"
-            timestampString = "480859953.394131"
+            timestampString = "481303848.990964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "addScreenRotationNotification()"
+            startingLineNumber = "1441"
+            endingLineNumber = "1441"
+            landmarkName = "handleAskToLock(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +57,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SeegnatureSDK/SeegnatureSDK/Views/SessionView.swift"
-            timestampString = "480859958.294428"
+            filePath = "SeegnatureSDK/SeegnatureSDK/ServerAPI.swift"
+            timestampString = "481304936.680549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "rotateScreen()"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "getArrayResult(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeegnatureSDK/SeegnatureSDK/ServerAPI.swift"
+            timestampString = "481305205.280323"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "getArrayResult(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -33,6 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UIEventRegister.tapRecognizer(self, action:"closeKeyboard")
         liveMedTitleLabel.attributedText = getAttrText("LiveMed", color: uicolorFromHex(0x8E8DA2), size: 30.0, fontName: "OpenSans-Semibold" )
         
+        
     }
     
     override func prefersStatusBarHidden() -> Bool {

@@ -42,21 +42,21 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
         UIEventRegister.tapRecognizer(self, action:"closeKeyboard")
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "HomeScreenReady", object: self))
     }
-    
-    override func viewDidAppear(animated: Bool) {
-//        self.openCallScreen("1763", resources: nil)
-//        self.openCallScreen("392", resources: nil)
-    }
-    
+
     func closeKeyboard(){
         email.resignFirstResponder()
         phone.resignFirstResponder()
+        sessionId.resignFirstResponder()
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: screen rotation
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        closeKeyboard()
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -110,10 +110,15 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
         let keyboardSize: CGSize = value.CGRectValue().size
         
         UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.view.frame.origin.y  -= keyboardSize.height
+            self.view.frame.origin.y  -= keyboardSize.height - self.inputsView.frame.origin.y
+            if self.sessionId.isFirstResponder() {
+                self.view.frame.origin.y -= self.sessionId.frame.size.height
+            }
         })
+        
 
     }
+    
     func keyboardWillHide(){
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.view.frame.origin.y  = 0.0
@@ -162,6 +167,8 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
         uploadButton.setTitleColor(uicolorFromHex(0xD0D0D0), forState: UIControlState.Normal)
         self.statusLabel.hidden = true
         self.sessionId.text = ""
+        self.sessionId.attributedText = getAttrText("I have a session ID", color: uicolorFromHex(0x67CA94), size: 17.0)
+        
     }
     
     func validateForm() -> Bool{
