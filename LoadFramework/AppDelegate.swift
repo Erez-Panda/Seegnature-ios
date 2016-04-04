@@ -31,15 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
         
         // change navigation item title color
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        
+
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.lightGrayColor()], forState:.Normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: defaultbuttonColor], forState:.Selected)
-        
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginSucceeded", name: "LoginSucceeded", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginFailed", name: "LoginFailed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "homeScreenReady:", name: "HomeScreenReady", object: nil)
-
-
+        
+        application.statusBarHidden = true
+        
         return true
     }
 

@@ -11,9 +11,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
         </mutableArray>
-        <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
-        </mutableArray>
     </customFonts>
     <scenes>
         <!--Intro View Controller-->
@@ -531,15 +528,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="7Qw-T0-rHx">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OgJ-GV-PyR">
-                            <rect key="frame" x="216" y="7" width="168" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="26"/>
-                            <state key="normal" title="Seegnature">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                         <barButtonItem key="rightBarButtonItem" id="Uhe-uy-Xu4">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lcG-kZ-kHx">
                                 <rect key="frame" x="560" y="11" width="20" height="22"/>

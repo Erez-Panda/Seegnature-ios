@@ -41,6 +41,9 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide"), name: UIKeyboardWillHideNotification, object: nil)
         UIEventRegister.tapRecognizer(self, action:"closeKeyboard")
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "HomeScreenReady", object: self))
+
+        self.navigationItem.titleView = UIImageView(image: UIImage(named: "navigation_bar_logo"))
+
     }
 
     func closeKeyboard(){
