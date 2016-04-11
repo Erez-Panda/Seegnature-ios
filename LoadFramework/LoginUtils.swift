@@ -28,7 +28,7 @@ struct LoginUtils {
         var error: NSError?
         
         // Set the reason string that will appear on the authentication alert.
-        let reasonString = "Authentication is needed to access LiveMed."
+        let reasonString = "Authentication is needed to access Seegnature."
         
         // Check if the device can evaluate the policy.
         if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &error) {

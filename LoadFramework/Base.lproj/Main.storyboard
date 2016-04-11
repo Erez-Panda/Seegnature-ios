@@ -235,7 +235,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bl7-mE-paG">
                                         <rect key="frame" x="8" y="0.0" width="576" height="20"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="LiveMed">
+                                            <fragment content="Seegnature">
                                                 <attributes>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="17" name="HelveticaNeue"/>
@@ -817,6 +817,6 @@
         <image name="password_login" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="biO-gS-nA3"/>
+        <segue reference="0rL-eh-87B"/>
     </inferredMetricsTieBreakers>
 </document>

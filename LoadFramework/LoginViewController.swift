@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShown"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide"), name: UIKeyboardWillHideNotification, object: nil)
         UIEventRegister.tapRecognizer(self, action:"closeKeyboard")
-        liveMedTitleLabel.attributedText = getAttrText("LiveMed", color: uicolorFromHex(0x8E8DA2), size: 30.0, fontName: "OpenSans-Semibold" )
+        liveMedTitleLabel.attributedText = getAttrText("Seegnature", color: uicolorFromHex(0x8E8DA2), size: 30.0, fontName: "OpenSans-Semibold" )
         
         
     }
