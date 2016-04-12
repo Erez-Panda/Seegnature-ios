@@ -20,8 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
     var callInfoId: String?
     var inquiryId: NSNumber?
     var newCallId: NSNumber?
-    var homeVC: InitiateSessionViewController?
-    var lastNotificationInfo: NSDictionary?
+    var homeVC: IntroViewController?
+    var didOpenCall = false
+    
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -69,7 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
         let urlParams = url.getKeyVals()
         if let callId = urlParams?["call_id"]{
-            openCallById(callId)
+            notificationCallId = callId
+            if self.homeVC != nil {
+                openCallById(callId)
+                didOpenCall = true
+            }
         }
         return true
     }
@@ -77,9 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
     func openCallById(callId: String) {
         if nil != loggedin{
             if let VC = getTopViewController() {
-                dispatch_async(dispatch_get_main_queue()){
-                    AppManager.sharedInstance.handleSessionRequest(VC, sessionId: callId, capabilities: ["video_enabled": true, "ask_for_video": true], resources: nil)
-                }
+//                if let launchVC = VC as? LaunchViewController {
+//                    launchVC.introViewController
+//                } else {
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.window!.rootViewController = self.homeVC
+                        AppManager.sharedInstance.handleSessionRequest(VC, sessionId: callId, capabilities: ["video_enabled": true, "ask_for_video": true], resources: nil)
+                    }
+//                }
             }
         } else {
             notificationCallId = callId
@@ -107,8 +117,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
     }
     
     func homeScreenReady(notification: NSNotification){
-        if let vc = notification.object as? InitiateSessionViewController{
+        if let vc = notification.object as? IntroViewController{
             homeVC = vc
+        }
+        if ((didOpenCall == false) && (notificationCallId != nil)) {
+            openCallById(notificationCallId!)
+            didOpenCall = true
         }
     }
     

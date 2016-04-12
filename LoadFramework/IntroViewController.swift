@@ -31,12 +31,10 @@ class IntroViewController: UIViewController {
         setLabelsSize()
         
         addScreenRotationNotification()
-
     }
     
     override func viewDidAppear(animated: Bool) {
-//        AppManager.sharedInstance.handleSessionRequest(self, sessionId: "1763", capabilities: ["video_enabled": true, "ask_for_video": true], resources: nil)
-//        AppManager.sharedInstance.handleSessionRequest(self, sessionId: "392", capabilities: ["video_enabled": true, "ask_for_video": true], resources: nil)
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "HomeScreenReady", object: self))        
     }
     
     override func didReceiveMemoryWarning() {
