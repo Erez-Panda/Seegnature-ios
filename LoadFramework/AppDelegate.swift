@@ -82,14 +82,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
     func openCallById(callId: String) {
         if nil != loggedin{
             if let VC = getTopViewController() {
-//                if let launchVC = VC as? LaunchViewController {
-//                    launchVC.introViewController
-//                } else {
-                    dispatch_async(dispatch_get_main_queue()){
-                        self.window!.rootViewController = self.homeVC
-                        AppManager.sharedInstance.handleSessionRequest(VC, sessionId: callId, capabilities: ["video_enabled": true, "ask_for_video": true], resources: nil)
-                    }
-//                }
+                dispatch_async(dispatch_get_main_queue()){
+                    self.window!.rootViewController = self.homeVC
+                    AppManager.sharedInstance.handleSessionRequest(VC, sessionId: callId, capabilities: ["video_enabled": true, "ask_for_video": true], resources: nil)
+                }
             }
         } else {
             notificationCallId = callId
