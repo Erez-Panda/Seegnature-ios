@@ -40,12 +40,10 @@ class AppManager: NSObject {
     func handleSessionRequest(currentVC: UIViewController, sessionId: String, capabilities: [String: AnyObject], isRep: Bool = false, resources: Array<Dictionary<String, AnyObject>>?) {
         
         let val = SeegnatureActions()
-        
         showSpinner("Initializing session")
         
         val.getSessionInfo(sessionId) {
             (result: Bool) in
-
             if (result == false) {
                 hideSpinner()
                 showAlert(currentVC, title: "Error", message: "Session id \(sessionId) not found")

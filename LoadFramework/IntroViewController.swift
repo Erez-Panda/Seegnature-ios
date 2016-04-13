@@ -23,7 +23,7 @@ class IntroViewController: UIViewController {
         
         registerKeyboardNotifications()
 
-        UIEventRegister.tapRecognizer(self, action: "closeKeyboard")
+        UIEventRegister.tapRecognizer(self, action: #selector(IntroViewController.closeKeyboard))
         
         setBordersForTextField(self.callIdTextField, borderWidth: 1.0)
         setBordersForTextField(self.loginButton, borderWidth: 1.0)
@@ -69,7 +69,7 @@ class IntroViewController: UIViewController {
     }
     
     func screenRotated() {
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: Selector("rotateScreen"), userInfo: AnyObject?(), repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: #selector(IntroViewController.rotateScreen), userInfo: AnyObject?(), repeats: false)
     }
     
     func rotateScreen() {
@@ -96,8 +96,8 @@ class IntroViewController: UIViewController {
     // MARK: keyboard methods
     
     func registerKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShown:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(IntroViewController.keyboardWillShown(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(IntroViewController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func keyboardWillShown(sender: NSNotification){

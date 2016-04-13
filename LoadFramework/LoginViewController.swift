@@ -28,9 +28,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.navigationController?.navigationBarHidden = true
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShown"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide"), name: UIKeyboardWillHideNotification, object: nil)
-        UIEventRegister.tapRecognizer(self, action:"closeKeyboard")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShown), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+        UIEventRegister.tapRecognizer(self, action:#selector(LoginViewController.closeKeyboard))
         liveMedTitleLabel.attributedText = getAttrText("Seegnature", color: uicolorFromHex(0x8E8DA2), size: 30.0, fontName: "OpenSans-Semibold" )
         
         

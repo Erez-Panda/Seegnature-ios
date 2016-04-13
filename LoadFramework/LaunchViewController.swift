@@ -9,7 +9,7 @@
 import UIKit
 import SeegnatureSDK
 
-class LaunchViewController: PortraitViewController {
+class LaunchViewController: UIViewController {
     var introViewController: IntroViewController?
     
     

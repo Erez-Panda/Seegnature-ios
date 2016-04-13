@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uIX-Ld-LM5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uIX-Ld-LM5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebT-RU-ZHF">
-                                <rect key="frame" x="0.0" y="540" width="299.5" height="60"/>
+                                <rect key="frame" x="0.0" y="540" width="300" height="60"/>
                                 <color key="backgroundColor" red="0.4039215686" green="0.79215686269999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Login">
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Seegnature      " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJ4-zc-gOz">
-                                <rect key="frame" x="0.0" y="103" width="165.5" height="66"/>
+                                <rect key="frame" x="0.0" y="103" width="166" height="66"/>
                                 <color key="backgroundColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="Q6i-Lh-alJ"/>
@@ -77,7 +77,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBf-OR-bRu">
-                                <rect key="frame" x="300" y="540" width="299.5" height="60"/>
+                                <rect key="frame" x="300" y="540" width="300" height="60"/>
                                 <color key="backgroundColor" red="0.4039215686" green="0.79215686269999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Sign up">
@@ -161,10 +161,10 @@
                                         <rect key="frame" x="45" y="28" width="502" height="110"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_login" translatesAutoresizingMaskIntoConstraints="NO" id="YvE-Qs-0hr">
-                                                <rect key="frame" x="15" y="8" width="23" height="39.5"/>
+                                                <rect key="frame" x="15" y="8" width="23" height="40"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password_login" translatesAutoresizingMaskIntoConstraints="NO" id="rLz-9Q-MbM">
-                                                <rect key="frame" x="15" y="62" width="23" height="39.5"/>
+                                                <rect key="frame" x="15" y="62" width="23" height="40"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WJc-nV-e4U">
                                                 <rect key="frame" x="53" y="72" width="449" height="20"/>
@@ -301,7 +301,7 @@
                                 <rect key="frame" x="50" y="170" width="500" height="200"/>
                                 <subviews>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbl-1S-QF9" userLabel="email" customClass="NIKFontAwesomeButton">
-                                        <rect key="frame" x="8" y="0.0" width="100" height="66.5"/>
+                                        <rect key="frame" x="8" y="0.0" width="100" height="67"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="sYA-eZ-nlx"/>
                                         </constraints>
@@ -332,14 +332,14 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtK-O8-P2m" userLabel="Seprator">
-                                        <rect key="frame" x="0.0" y="66" width="500" height="1"/>
+                                        <rect key="frame" x="0.0" y="67" width="500" height="1"/>
                                         <color key="backgroundColor" red="0.73333333329999995" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="6eo-MP-CnP"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXy-nM-1Ub" userLabel="phone" customClass="NIKFontAwesomeButton">
-                                        <rect key="frame" x="8" y="66" width="100" height="66.5"/>
+                                        <rect key="frame" x="8" y="67" width="100" height="67"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="IF7-ES-aOk"/>
                                         </constraints>
@@ -362,7 +362,7 @@
                                         </variation>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mxG-Lu-YzM">
-                                        <rect key="frame" x="116" y="87" width="383.5" height="25"/>
+                                        <rect key="frame" x="116" y="88" width="384" height="25"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                         <connections>
@@ -370,14 +370,14 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2A-RC-rGj" userLabel="Seprator">
-                                        <rect key="frame" x="0.0" y="132" width="500" height="1"/>
+                                        <rect key="frame" x="0.0" y="134" width="500" height="1"/>
                                         <color key="backgroundColor" red="0.73333333329999995" green="0.72941176470000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Zpw-k7-mav"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEt-Y8-HHn">
-                                        <rect key="frame" x="116" y="147" width="384" height="37"/>
+                                        <rect key="frame" x="116" y="149" width="384" height="37"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                         <color key="tintColor" red="0.71764705880000002" green="0.71764705880000002" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Document">
@@ -388,7 +388,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KOi-Ov-9rW" userLabel="document" customClass="NIKFontAwesomeButton">
-                                        <rect key="frame" x="8" y="132" width="100" height="66.5"/>
+                                        <rect key="frame" x="8" y="134" width="100" height="67"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="g8n-3L-uU6"/>
                                         </constraints>
@@ -456,7 +456,7 @@
                                 <rect key="frame" x="222" y="550" width="20" height="20"/>
                             </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploading file" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gZ-xN-a9n">
-                                <rect key="frame" x="247" y="549" width="105.5" height="20.5"/>
+                                <rect key="frame" x="247" y="549" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -565,6 +565,7 @@
         <!--Navigation Controller With Orientation-->
         <scene sceneID="dIp-ht-g2m">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ykN-Dn-4l1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CJR-rD-PJa" customClass="UINavigationControllerWithOrientation" customModule="Seegnature" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="U3H-0G-aSV"/>
@@ -577,7 +578,6 @@
                         <segue destination="f7A-mO-ALz" kind="relationship" relationship="rootViewController" id="6P1-Au-CZ8"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ykN-Dn-4l1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1134" y="1016"/>
         </scene>
@@ -603,7 +603,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh5-7p-8dZ">
-                                        <rect key="frame" x="146" y="120" width="410" height="20.5"/>
+                                        <rect key="frame" x="146" y="120" width="410" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -817,6 +817,6 @@
         <image name="password_login" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0rL-eh-87B"/>
+        <segue reference="biO-gS-nA3"/>
     </inferredMetricsTieBreakers>
 </document>

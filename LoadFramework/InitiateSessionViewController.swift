@@ -37,9 +37,9 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
         fileSelector = FileSelector(viewController: self)
         fileSelector.delegate = self
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShown:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide"), name: UIKeyboardWillHideNotification, object: nil)
-        UIEventRegister.tapRecognizer(self, action:"closeKeyboard")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(InitiateSessionViewController.keyboardWillShown(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(InitiateSessionViewController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+        UIEventRegister.tapRecognizer(self, action:#selector(InitiateSessionViewController.closeKeyboard))
 
         self.navigationItem.titleView = UIImageView(image: UIImage(named: "navigation_bar_logo"))
 
@@ -269,14 +269,10 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
 //        }
         
         let defaultCapabilities = ["video_enabled": true, "ask_for_video": true]
-        
         AppManager.sharedInstance.handleSessionRequest(self, sessionId: callId, capabilities: defaultCapabilities, isRep: true, resources: resources)
         
         self.resetForm()
-        
-        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
-            appDelegate.window?.rootViewController = self
-        }
+
     }
     
     @IBAction func startSession(sender: AnyObject) {

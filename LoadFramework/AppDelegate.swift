@@ -36,9 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.lightGrayColor()], forState:.Normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: defaultbuttonColor], forState:.Selected)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginSucceeded", name: "LoginSucceeded", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginFailed", name: "LoginFailed", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "homeScreenReady:", name: "HomeScreenReady", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.loginSucceeded), name: "LoginSucceeded", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.loginFailed), name: "LoginFailed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.homeScreenReady(_:)), name: "HomeScreenReady", object: nil)
         
         application.statusBarHidden = true
         
@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
+        getTopViewController()?.view.endEditing(true)
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
@@ -83,7 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
         if nil != loggedin{
             if let VC = getTopViewController() {
                 dispatch_async(dispatch_get_main_queue()){
-                    self.window!.rootViewController = self.homeVC
                     AppManager.sharedInstance.handleSessionRequest(VC, sessionId: callId, capabilities: ["video_enabled": true, "ask_for_video": true], resources: nil)
                 }
             }
