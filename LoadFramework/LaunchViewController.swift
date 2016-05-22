@@ -31,7 +31,6 @@ class LaunchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         let defaultUser = NSUserDefaults.standardUserDefaults()
         if let credentials : AnyObject = defaultUser.objectForKey("credentials") {
             LoginUtils.authenticateUser({ (result) -> Void in

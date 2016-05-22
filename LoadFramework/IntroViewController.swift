@@ -82,7 +82,7 @@ class IntroViewController: UIViewController {
 
         if (textField.text != ""){
             
-            let capabilities = ["video_enabled": true, "ask_for_video": true]
+            let capabilities = ["video_enabled": false, "ask_for_video": true]
             AppManager.sharedInstance.handleSessionRequest(self, sessionId: textField.text!, capabilities: capabilities, isRep: false, resources: nil)
         }
         

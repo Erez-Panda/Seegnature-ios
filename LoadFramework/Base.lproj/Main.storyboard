@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uIX-Ld-LM5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uIX-Ld-LM5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Seegnature      " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJ4-zc-gOz">
-                                <rect key="frame" x="0.0" y="103" width="166" height="66"/>
+                                <rect key="frame" x="0.0" y="104" width="166" height="66"/>
                                 <color key="backgroundColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="Q6i-Lh-alJ"/>
@@ -50,18 +50,8 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="I have a call ID" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5SB-zl-bUz">
-                                <rect key="frame" x="0.0" y="479" width="600" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.4039215686" green="0.79215686269999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="join" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="39S-Rq-HYF"/>
-                                </connections>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9D-mV-z6p">
-                                <rect key="frame" x="40" y="219" width="240" height="240"/>
+                                <rect key="frame" x="40" y="220" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="ysG-we-gor"/>
                                 </constraints>
@@ -84,16 +74,28 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="I have a call ID" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5SB-zl-bUz">
+                                <rect key="frame" x="0.0" y="480" width="600" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.4039215686" green="0.79215686269999996" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="join" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="39S-Rq-HYF"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ebT-RU-ZHF" firstAttribute="height" secondItem="5SB-zl-bUz" secondAttribute="height" id="7yc-3P-i5z"/>
                             <constraint firstItem="rBf-OR-bRu" firstAttribute="height" secondItem="ebT-RU-ZHF" secondAttribute="height" id="BFR-Kb-9R4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5SB-zl-bUz" secondAttribute="bottom" id="BMv-m0-xgX"/>
                             <constraint firstItem="rBf-OR-bRu" firstAttribute="trailing" secondItem="5SB-zl-bUz" secondAttribute="trailing" id="Bvl-Fc-hZm"/>
                             <constraint firstItem="WME-Dl-VZe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="F4j-Uf-oUY"/>
                             <constraint firstItem="v9D-mV-z6p" firstAttribute="top" secondItem="aJ4-zc-gOz" secondAttribute="bottom" constant="50" id="IVi-wX-NP9"/>
                             <constraint firstItem="aJ4-zc-gOz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="JFE-bz-Ovd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ebT-RU-ZHF" secondAttribute="bottom" id="KSf-nY-cjX"/>
                             <constraint firstItem="5SB-zl-bUz" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:10" id="Mbp-7I-BU9"/>
+                            <constraint firstItem="5SB-zl-bUz" firstAttribute="top" secondItem="ebT-RU-ZHF" secondAttribute="bottom" id="QFt-Kw-PSU"/>
                             <constraint firstItem="v9D-mV-z6p" firstAttribute="leading" secondItem="aJ4-zc-gOz" secondAttribute="leading" constant="40" id="QYf-c2-yCy"/>
                             <constraint firstItem="WME-Dl-VZe" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="REy-CL-LcY"/>
                             <constraint firstItem="5SB-zl-bUz" firstAttribute="top" secondItem="v9D-mV-z6p" secondAttribute="bottom" constant="20" id="Tan-rN-Wpc"/>
@@ -108,10 +110,14 @@
                             <constraint firstItem="ebT-RU-ZHF" firstAttribute="leading" secondItem="5SB-zl-bUz" secondAttribute="leading" id="lJP-iL-u4q"/>
                             <constraint firstItem="ebT-RU-ZHF" firstAttribute="top" secondItem="5SB-zl-bUz" secondAttribute="bottom" constant="1" id="p2g-Wk-euZ"/>
                             <constraint firstItem="ebT-RU-ZHF" firstAttribute="width" secondItem="5SB-zl-bUz" secondAttribute="width" multiplier="1:2" id="qGI-Wx-BRf"/>
+                            <constraint firstItem="ebT-RU-ZHF" firstAttribute="top" secondItem="5SB-zl-bUz" secondAttribute="bottom" id="qj4-Ch-G1G"/>
                             <constraint firstItem="5SB-zl-bUz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="tio-fm-YND"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="QFt-Kw-PSU"/>
+                                <exclude reference="p2g-Wk-euZ"/>
+                                <exclude reference="BMv-m0-xgX"/>
                                 <exclude reference="eKu-cq-SyC"/>
                             </mask>
                         </variation>
@@ -565,7 +571,6 @@
         <!--Navigation Controller With Orientation-->
         <scene sceneID="dIp-ht-g2m">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ykN-Dn-4l1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CJR-rD-PJa" customClass="UINavigationControllerWithOrientation" customModule="Seegnature" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="U3H-0G-aSV"/>
@@ -578,6 +583,7 @@
                         <segue destination="f7A-mO-ALz" kind="relationship" relationship="rootViewController" id="6P1-Au-CZ8"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ykN-Dn-4l1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1134" y="1016"/>
         </scene>

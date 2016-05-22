@@ -249,8 +249,8 @@ class InitiateSessionViewController: UIViewController, FileSelectorDelegate, UIT
                                     "type": "sign-document",
                                     "related_resource": resId]
                                 self.seegnatureManager.newGuestCall(call, completion: { (result) -> Void in
-                                    if let id = result["id"] as? NSNumber{
-                                        self.openCallScreen(id.stringValue, resources: [newRes as! Dictionary<String, AnyObject>])
+                                    if let id = result["uuid"] as? String{
+                                        self.openCallScreen(id, resources: [newRes as! Dictionary<String, AnyObject>])
                                     }
                                     
                                 })

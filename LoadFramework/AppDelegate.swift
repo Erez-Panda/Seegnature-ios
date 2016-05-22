@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
         if nil != loggedin{
             if let VC = getTopViewController() {
                 dispatch_async(dispatch_get_main_queue()){
-                    AppManager.sharedInstance.handleSessionRequest(VC, sessionId: callId, capabilities: ["video_enabled": true, "ask_for_video": true], resources: nil)
+                    AppManager.sharedInstance.handleSessionRequest(VC, sessionId: callId, capabilities: ["video_enabled": false, "ask_for_video": true], resources: nil)
                 }
             }
         } else {
