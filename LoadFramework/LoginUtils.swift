@@ -31,7 +31,8 @@ struct LoginUtils {
         let reasonString = "Authentication is needed to access Seegnature."
         
         // Check if the device can evaluate the policy.
-        if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &error) {
+        do {
+            try context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error:nil)
             [context .evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString, reply: { (success: Bool, evalPolicyError: NSError?) -> Void in
                 
                 if success {
@@ -41,46 +42,46 @@ struct LoginUtils {
                 else{
                     // If authentication failed then show a message to the console with a short description.
                     // In case that the error is a user fallback, then show the password alert view.
-                    print(evalPolicyError?.localizedDescription)
+                    print(evalPolicyError?.localizedDescription, terminator: "")
                     
                     switch evalPolicyError!.code {
                         
                     case LAError.SystemCancel.rawValue:
-                        print("Authentication was cancelled by the system")
+                        print("Authentication was cancelled by the system", terminator: "")
                         
                     case LAError.UserCancel.rawValue:
-                        print("Authentication was cancelled by the user")
+                        print("Authentication was cancelled by the user", terminator: "")
                         
                     case LAError.UserFallback.rawValue:
-                        print("User selected to enter custom password")
+                        print("User selected to enter custom password", terminator: "")
                         self.showPasswordAlert()
                         
                     default:
-                        print("Authentication failed")
+                        print("Authentication failed", terminator: "")
                         self.showPasswordAlert()
                     }
                     completion(result: false)
                 }
                 
             })]
-        }
-        else{
+        } catch var error1 as NSError {
+            error = error1
             // If the security policy cannot be evaluated then show a short message depending on the error.
             switch error!.code{
                 
             case LAError.TouchIDNotEnrolled.rawValue:
-                print("TouchID is not enrolled")
+                print("TouchID is not enrolled", terminator: "")
                 
             case LAError.PasscodeNotSet.rawValue:
-                print("A passcode has not been set")
+                print("A passcode has not been set", terminator: "")
                 
             default:
                 // The LAError.TouchIDNotAvailable case.
-                print("TouchID not available")
+                print("TouchID not available", terminator: "")
             }
             
             // Optionally the error description can be displayed on the console.
-            print(error?.localizedDescription)
+            print(error?.localizedDescription, terminator: "")
             completion(result: true)
             return
             // Show the custom alert view to allow users to enter the password.

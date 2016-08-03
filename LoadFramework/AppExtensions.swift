@@ -112,8 +112,8 @@ func showAlert(currentVC: UIViewController, title: String = "Error", message: St
         } else {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
             
-            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction!) in
-                print("OK button pressed");
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction) in
+                print("OK button pressed", terminator: "");
             }
             
             alertController.addAction(OKAction)

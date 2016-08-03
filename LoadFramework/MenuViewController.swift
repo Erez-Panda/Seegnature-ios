@@ -270,7 +270,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        print("CANCEL")
+        print("CANCEL", terminator: "")
     }
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if (closing){
