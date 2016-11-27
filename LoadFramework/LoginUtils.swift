@@ -64,7 +64,7 @@ struct LoginUtils {
                 }
                 
             })]
-        } catch var error1 as NSError {
+        } catch let error1 as NSError {
             error = error1
             // If the security policy cannot be evaluated then show a short message depending on the error.
             switch error!.code{

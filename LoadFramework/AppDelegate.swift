@@ -77,6 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
                 didOpenCall = true
             }
         }
+        if let bearer = urlParams?["b"]{
+            ServerAPI.sharedInstance.setBearer(bearer)
+        }
         return true
     }
     
