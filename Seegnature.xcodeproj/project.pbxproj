@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		440D01071C844E700070100A /* OpenTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440D01061C844E700070100A /* OpenTok.framework */; };
 		440D010B1C84502F0070100A /* SeegnatureSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4413AF8D1C844A680049EDB9 /* SeegnatureSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4413AF911C844ABA0049EDB9 /* SeegnatureSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4413AF8D1C844A680049EDB9 /* SeegnatureSDK.framework */; };
 		4426F0FF1C945F4800CA71B5 /* UINavigationControllerWithOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426F0FE1C945F4800CA71B5 /* UINavigationControllerWithOrientation.swift */; };
@@ -38,6 +37,7 @@
 		44D8110B1C91B00C00F33639 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8110A1C91B00C00F33639 /* LoginViewController.swift */; };
 		44D8110E1C91B0A500F33639 /* LoginUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8110D1C91B0A500F33639 /* LoginUtils.swift */; };
 		44D811101C91B2E100F33639 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8110F1C91B2E100F33639 /* AppExtensions.swift */; };
+		A8200CF21E2F6CC000F4BB2D /* OpenTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440D01061C844E700070100A /* OpenTok.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				440D01071C844E700070100A /* OpenTok.framework in Frameworks */,
+				A8200CF21E2F6CC000F4BB2D /* OpenTok.framework in Frameworks */,
 				4413AF911C844ABA0049EDB9 /* SeegnatureSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
