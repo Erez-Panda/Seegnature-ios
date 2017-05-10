@@ -22,9 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
     var newCallId: NSNumber?
     var homeVC: IntroViewController?
     var didOpenCall = false
-    let LoginSucceededName = Notification.Name("LoginSucceeded")
-    let LoginFailedName = Notification.Name("loginFailed")
-    let homeScreenReadyName = Notification.Name("homeScreenReady")
+
 
     
     
@@ -41,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: defaultbuttonColor], for:.selected)
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.loginSucceeded), name: LoginSucceededName, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.loginFailed), name: LoginFailedName, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.homeScreenReady(_:)), name: homeScreenReadyName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.loginSucceeded), name: seegnatureManager.LoginSucceededName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.loginFailed), name: seegnatureManager.LoginFailedName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.homeScreenReady(_:)), name: seegnatureManager.homeScreenReadyName, object: nil)
         
         application.isStatusBarHidden = true
         
@@ -84,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LoginDelegate {
         }
 
         if let bearer = urlParams?["b"]{
-            ServerAPI.sharedInstance.setToken("asd")
+            seegnatureManager.setBearer(bearer)
         }
         return true
     }

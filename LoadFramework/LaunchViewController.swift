@@ -11,6 +11,7 @@ import SeegnatureSDK
 
 class LaunchViewController: UIViewController {
     var introViewController: IntroViewController?
+    let seegnatureManager = SeegnatureActions()
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,7 +26,7 @@ class LaunchViewController: UIViewController {
 //            self.view.addSubview(self.introViewController!.view)
 //            self.introViewController!.didMoveToParentViewController(self)
         }
-        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "LoginFailed"), object: nil))
+        NotificationCenter.default.post(Notification(name: seegnatureManager.LoginFailedName, object: nil))
     }
     
     override func viewDidLoad() {
@@ -42,7 +43,7 @@ class LaunchViewController: UIViewController {
                                 if (!result){
                                     self.showIntro()
                                 } else {
-                                    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "LoginSucceeded"), object: nil))
+                                    NotificationCenter.default.post(Notification(name:  seegnatureManager.LoginSucceededName, object: nil))
                                     DispatchQueue.main.async{
                                         self.performSegue(withIdentifier: "launchToRepMainScreenSegue", sender: nil)
                                     }

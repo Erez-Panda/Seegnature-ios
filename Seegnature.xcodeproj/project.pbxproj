@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		440D010B1C84502F0070100A /* SeegnatureSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4413AF8D1C844A680049EDB9 /* SeegnatureSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4413AF911C844ABA0049EDB9 /* SeegnatureSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4413AF8D1C844A680049EDB9 /* SeegnatureSDK.framework */; };
 		4426F0FF1C945F4800CA71B5 /* UINavigationControllerWithOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426F0FE1C945F4800CA71B5 /* UINavigationControllerWithOrientation.swift */; };
 		4426F1011C945FBE00CA71B5 /* InitiateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426F1001C945FBE00CA71B5 /* InitiateSessionViewController.swift */; };
 		4426F1051C946C8C00CA71B5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4426F1041C946C8C00CA71B5 /* MenuViewController.swift */; };
@@ -38,6 +36,8 @@
 		44D8110E1C91B0A500F33639 /* LoginUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8110D1C91B0A500F33639 /* LoginUtils.swift */; };
 		44D811101C91B2E100F33639 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8110F1C91B2E100F33639 /* AppExtensions.swift */; };
 		A8200CF21E2F6CC000F4BB2D /* OpenTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440D01061C844E700070100A /* OpenTok.framework */; };
+		A87AFD451EC2FFB00032DCE0 /* SeegnatureSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4413AF8D1C844A680049EDB9 /* SeegnatureSDK.framework */; };
+		A87AFD461EC2FFB00032DCE0 /* SeegnatureSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4413AF8D1C844A680049EDB9 /* SeegnatureSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 			remoteGlobalIDString = 44AF19801C6B3C5A0046A2DE;
 			remoteInfo = SeegnatureSDK;
 		};
-		4413AF8F1C844AB00049EDB9 /* PBXContainerItemProxy */ = {
+		A87AFD471EC2FFB00032DCE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4413AF881C844A680049EDB9 /* SeegnatureSDK.xcodeproj */;
 			proxyType = 1;
@@ -58,22 +58,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		440D010A1C8450210070100A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				440D010B1C84502F0070100A /* SeegnatureSDK.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		444A297E1C79E49E005FC769 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A87AFD461EC2FFB00032DCE0 /* SeegnatureSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,8 +112,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87AFD451EC2FFB00032DCE0 /* SeegnatureSDK.framework in Frameworks */,
 				A8200CF21E2F6CC000F4BB2D /* OpenTok.framework in Frameworks */,
-				4413AF911C844ABA0049EDB9 /* SeegnatureSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,12 +218,11 @@
 				449F9ED41C6A45C400E2AEAD /* Frameworks */,
 				449F9ED51C6A45C400E2AEAD /* Resources */,
 				444A297E1C79E49E005FC769 /* Embed Frameworks */,
-				440D010A1C8450210070100A /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4413AF901C844AB00049EDB9 /* PBXTargetDependency */,
+				A87AFD481EC2FFB00032DCE0 /* PBXTargetDependency */,
 			);
 			name = Seegnature;
 			productName = LoadFramework;
@@ -246,7 +236,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Moshe Krush";
 				TargetAttributes = {
 					449F9ED61C6A45C400E2AEAD = {
@@ -344,10 +334,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4413AF901C844AB00049EDB9 /* PBXTargetDependency */ = {
+		A87AFD481EC2FFB00032DCE0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SeegnatureSDK;
-			targetProxy = 4413AF8F1C844AB00049EDB9 /* PBXContainerItemProxy */;
+			targetProxy = A87AFD471EC2FFB00032DCE0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -384,8 +374,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -431,8 +423,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -453,6 +447,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -461,7 +456,7 @@
 		449F9EEA1C6A45C400E2AEAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Seegnature.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -493,7 +488,7 @@
 		449F9EEB1C6A45C400E2AEAD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Seegnature.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

@@ -17,6 +17,7 @@ class IntroViewController: UIViewController {
     @IBOutlet weak var seegnatureLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    let seegnatureManager = SeegnatureActions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class IntroViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "HomeScreenReady"), object: self))        
+        NotificationCenter.default.post(Notification(name: seegnatureManager.homeScreenReadyName, object: self))
     }
     
     override func didReceiveMemoryWarning() {
