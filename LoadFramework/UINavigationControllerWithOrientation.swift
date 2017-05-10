@@ -22,8 +22,8 @@ class UINavigationControllerWithOrientation: UINavigationController {
 //        return self.topViewController!.preferredInterfaceOrientationForPresentation()
 //    }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
 
 }

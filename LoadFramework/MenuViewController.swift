@@ -50,8 +50,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let firstName = user?["first_name"] as! String
         let lastName = user?["last_name"] as! String
         userNameLabel.text = firstName + " " + lastName
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        tableView.separatorInset = UIEdgeInsetsZero
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.separatorInset = UIEdgeInsets.zero
         /*
         // Add Border
         var leftBorder = CALayer()
@@ -70,27 +70,27 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-    func getProfileImage(completion: (result: UIImage) -> Void) -> Void{
+    func getProfileImage(_ completion: @escaping (_ result: UIImage) -> Void) -> Void{
         if ((profileImageView.image) != nil){
-            completion(result: profileImageView.image!)
+            completion(profileImageView.image!)
         } else {
-            let defaultUser = NSUserDefaults.standardUserDefaults()
-            if let userProfile : AnyObject = defaultUser.objectForKey("userProfile") {
+            let defaultUser = UserDefaults.standard
+            if let userProfile : AnyObject = defaultUser.object(forKey: "userProfile") as AnyObject {
                 if let imageFile = userProfile["image_file"] as? NSNumber{
                     getImageFile(imageFile, completion: { (result) -> Void in
                         self.profileImageView.image = result
-                        completion(result: result)
+                        completion(result)
                     })
                 }
             }
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+    func numberOfSections(in tableView: UITableView) -> Int{
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableCellNumber
     }
     
@@ -122,14 +122,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     */
     
-    func loadCollapseTable(tableView: UITableView, index: Int)-> UITableViewCell{
-        let cell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! MenuTableViewCell
+    func loadCollapseTable(_ tableView: UITableView, index: Int)-> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as! MenuTableViewCell
         let iconName = self.menuIcons[index]
         cell.leftIconView.image = UIImage(named: iconName)
-        cell.leftIconView.hidden = false
+        cell.leftIconView.isHidden = false
         cell.label.text = self.menuItems[index]
-        cell.label.textColor = UIColor.blackColor()
-        cell.rightButton.hidden = true;
+        cell.label.textColor = UIColor.black
+        cell.rightButton.isHidden = true;
         /*
         if (index != 0){
         cell.rightButton.hidden = true;
@@ -159,7 +159,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     */
     }
     */
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return loadCollapseTable(tableView, index: indexPath.row)
         /*
         if (menuOpen){
@@ -170,12 +170,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         */
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
         openMenuItem(index)
     }
     
-    func openMenuItem(index: Int){
+    func openMenuItem(_ index: Int){
         /*
         if (index == 1){
         closeMenuAndShowViewController("ProfileUIViewController")
@@ -189,7 +189,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         */
         if (index == 0){
             
-            let nsObject: AnyObject? = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
+            let nsObject: AnyObject? = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject
             let version = nsObject as! String
             if let vc = getTopViewController() {
                 showAlert(vc, title: "Seegnature", message: "Version: \(version)")
@@ -197,22 +197,22 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else if (index == 1){
             seegnatureManager.logout() {result -> Void in
                 AppManager.sharedInstance.cleanUserData()
-                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("IntroViewController") as! IntroViewController
-                self.presentViewController(vc, animated: true, completion: nil)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "IntroViewController") as! IntroViewController
+                self.present(vc, animated: true, completion: nil)
             }
         } else {
             self.close(true)
         }
     }
     
-    @IBAction func closeSelf(sender: AnyObject) {
+    @IBAction func closeSelf(_ sender: AnyObject) {
         //close(true)
     }
-    func close(withAnimation: Bool){
+    func close(_ withAnimation: Bool){
         if (!closing){
             if (withAnimation){
                 closing = true
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                UIView.animate(withDuration: 0.5, animations: { () -> Void in
                     self.view.frame.origin.x = -1 * self.view.frame.size.width
                     self.view.alpha = 0.0
                     },
@@ -230,28 +230,28 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    func closeMenuAndShowViewController(identifier: String){
+    func closeMenuAndShowViewController(_ identifier: String){
         close(false)
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(identifier)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: identifier)
         self.previousViewController.navigationController?.pushViewController(vc!, animated: true)
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (closing){
             return
         }
-        super.touchesBegan(touches, withEvent: event)
+        super.touchesBegan(touches, with: event)
         if let touch: UITouch = touches.first!{
-            startPoint = touch.locationInView(self.view) as CGPoint
-            let touchLocation = touch.locationInView(self.view) as CGPoint
+            startPoint = touch.location(in: self.view) as CGPoint
+            let touchLocation = touch.location(in: self.view) as CGPoint
             
             
             
             self.isDragging = true
             
             if nil != self.closeButton?.frame {
-                let f = CGRectMake(self.view.frame.size.width-50, 0, 100, self.view.frame.height)
-                if (CGRectContainsPoint(f, touchLocation)){
+                let f = CGRect(x: self.view.frame.size.width-50, y: 0, width: 100, height: self.view.frame.height)
+                if (f.contains(touchLocation)){
                     close(true)
                 }
             }
@@ -260,7 +260,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (closing){
             return
         }
@@ -269,19 +269,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             close(true)
         }
     }
-    override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("CANCEL", terminator: "")
     }
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (closing){
             return
         }
         if let touch: UITouch = touches.first{
-            let touchLocation = touch.locationInView(self.view) as CGPoint
+            let touchLocation = touch.location(in: self.view) as CGPoint
             if (self.isDragging){
-                UIView.animateWithDuration(0.0,
+                UIView.animate(withDuration: 0.0,
                     delay: 0.0,
-                    options: ([UIViewAnimationOptions.BeginFromCurrentState, UIViewAnimationOptions.CurveEaseInOut]),
+                    options: (UIViewAnimationOptions.beginFromCurrentState),
                     animations:  {
                         self.view.frame.origin.x += (touchLocation.x-self.startPoint!.x)
                         self.view.alpha = 0.92 + (self.view.frame.origin.x/self.view.frame.size.width)
@@ -307,7 +307,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showFeatureFromMenu"){
             //let nav = segue.destinationViewController as! UINavigationController
             //var svc = nav.viewControllers[0] as! FeatureViewController

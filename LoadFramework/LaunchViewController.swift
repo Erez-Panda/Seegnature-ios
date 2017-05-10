@@ -18,21 +18,21 @@ class LaunchViewController: UIViewController {
     }
     
     func showIntro(){
-        dispatch_async(dispatch_get_main_queue()){
-            self.introViewController = self.storyboard?.instantiateViewControllerWithIdentifier("IntroViewController") as? IntroViewController
-            self.presentViewController(self.introViewController!, animated: true, completion: nil)
+        DispatchQueue.main.async{
+            self.introViewController = self.storyboard?.instantiateViewController(withIdentifier: "IntroViewController") as? IntroViewController
+            self.present(self.introViewController!, animated: true, completion: nil)
 //            self.addChildViewController(self.introViewController!)
 //            self.view.addSubview(self.introViewController!.view)
 //            self.introViewController!.didMoveToParentViewController(self)
         }
-        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "LoginFailed", object: nil))
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "LoginFailed"), object: nil))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaultUser = NSUserDefaults.standardUserDefaults()
-        if let credentials : AnyObject = defaultUser.objectForKey("credentials") {
-            LoginUtils.authenticateUser({ (result) -> Void in
+        let defaultUser = UserDefaults.standard
+        if let credentials : AnyObject = defaultUser.object(forKey: "credentials") as AnyObject {
+            LoginUtils.authenticateUser(completion: { (result) -> Void in
                 if (result){
                     if let username = credentials["username"] as? String  {
                         if let password = credentials["password"] as? String {
@@ -42,9 +42,9 @@ class LaunchViewController: UIViewController {
                                 if (!result){
                                     self.showIntro()
                                 } else {
-                                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "LoginSucceeded", object: nil))
-                                    dispatch_async(dispatch_get_main_queue()){
-                                        self.performSegueWithIdentifier("launchToRepMainScreenSegue", sender: AnyObject?())
+                                    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "LoginSucceeded"), object: nil))
+                                    DispatchQueue.main.async{
+                                        self.performSegue(withIdentifier: "launchToRepMainScreenSegue", sender: nil)
                                     }
                                 }
                             }
@@ -59,7 +59,7 @@ class LaunchViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if (!Reachability.isConnectedToNetwork()){
             showAlert(self, title: "Connectivity Error", message: "This application requiers internet connection. Please connect to the internet and reopen application")
         }
@@ -69,7 +69,7 @@ class LaunchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

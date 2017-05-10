@@ -10,35 +10,35 @@ import UIKit
 
 struct UIEventRegister {
     
-    static func gestureRecognizer(sender: UIViewController, rightAction: Selector, leftAction: Selector, upAction: Selector, downAction: Selector) -> Void{
+    static func gestureRecognizer(_ sender: UIViewController, rightAction: Selector?, leftAction: Selector?, upAction: Selector?, downAction: Selector?) -> Void{
         if rightAction != nil {
             let swipeRight = UISwipeGestureRecognizer(target: sender, action: rightAction)
-            swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+            swipeRight.direction = UISwipeGestureRecognizerDirection.right
             swipeRight.cancelsTouchesInView = false
             sender.view.addGestureRecognizer(swipeRight)
         }
         if leftAction != nil {
             let swipeLeft = UISwipeGestureRecognizer(target: sender, action: leftAction)
-            swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+            swipeLeft.direction = UISwipeGestureRecognizerDirection.left
             swipeLeft.cancelsTouchesInView = false
             sender.view.addGestureRecognizer(swipeLeft)
         }
         if upAction != nil {
             let swipeUp = UISwipeGestureRecognizer(target: sender, action: upAction)
-            swipeUp.direction = UISwipeGestureRecognizerDirection.Up
+            swipeUp.direction = UISwipeGestureRecognizerDirection.up
             swipeUp.cancelsTouchesInView = false
             sender.view.addGestureRecognizer(swipeUp)
         }
         if downAction != nil {
             let swipeDown = UISwipeGestureRecognizer(target: sender, action: downAction)
-            swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+            swipeDown.direction = UISwipeGestureRecognizerDirection.down
             swipeDown.cancelsTouchesInView = false
             sender.view.addGestureRecognizer(swipeDown)
         }
         
     }
     
-    static func tapRecognizer(sender: UIViewController, action: Selector){
+    static func tapRecognizer(_ sender: UIViewController, action: Selector){
         let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: sender, action: action)
         tap.cancelsTouchesInView = false
         sender.view.addGestureRecognizer(tap)

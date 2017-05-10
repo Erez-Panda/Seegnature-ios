@@ -33,8 +33,8 @@ class IntroViewController: UIViewController {
         addScreenRotationNotification()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "HomeScreenReady", object: self))        
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "HomeScreenReady"), object: self))        
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,15 +53,15 @@ class IntroViewController: UIViewController {
     func setLabelsSize() {
         
         self.titleTextView.attributedText = getAttrText("Review, edit and sign documents during a real time video call", color: uicolorFromHex(0x45445A), size: 28.0, fontName:"OpenSans-Semibold", addShadow: true)
-        self.view.bringSubviewToFront(self.titleTextView)
+        self.view.bringSubview(toFront: self.titleTextView)
         
-        seegnatureLabel.attributedText = getAttrText(" Seegnature ", color: UIColor.whiteColor(), size: 42.0, fontName:"OpenSans-Semibold")
+        seegnatureLabel.attributedText = getAttrText(" Seegnature ", color: UIColor.white, size: 42.0, fontName:"OpenSans-Semibold")
     }
     
     
     
     // MARK: screen rotation
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         closeKeyboard()
     }
     func addScreenRotationNotification() {
@@ -69,7 +69,7 @@ class IntroViewController: UIViewController {
     }
     
     func screenRotated() {
-        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(0.1), target: self, selector: #selector(IntroViewController.rotateScreen), userInfo: AnyObject?(), repeats: false)
+        Timer.scheduledTimer(timeInterval: TimeInterval(0.1), target: self, selector: #selector(IntroViewController.rotateScreen), userInfo: nil, repeats: false)
     }
     
     func rotateScreen() {
@@ -78,12 +78,12 @@ class IntroViewController: UIViewController {
     
     // MARK: textfield methods
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
         if (textField.text != ""){
             
             let capabilities = ["video_enabled": false, "ask_for_video": true]
-            AppManager.sharedInstance.handleSessionRequest(self, sessionId: textField.text!, capabilities: capabilities, isRep: false, resources: nil)
+            AppManager.sharedInstance.handleSessionRequest(self, sessionId: textField.text!, capabilities: capabilities as [String : AnyObject], isRep: false, resources: nil)
         }
         
         textField.attributedText = getAttrText("I have a call ID", color: uicolorFromHex(0x67CA94), size: 18.0)
@@ -96,23 +96,23 @@ class IntroViewController: UIViewController {
     // MARK: keyboard methods
     
     func registerKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(IntroViewController.keyboardWillShown(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(IntroViewController.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(IntroViewController.keyboardWillShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(IntroViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func keyboardWillShown(sender: NSNotification){
-        let info: NSDictionary = sender.userInfo!
-        let value: NSValue = info.valueForKey(UIKeyboardFrameBeginUserInfoKey) as! NSValue
-        let keyboardSize: CGSize = value.CGRectValue().size
+    func keyboardWillShown(_ sender: Notification){
+        let info: NSDictionary = sender.userInfo! as NSDictionary
+        let value: NSValue = info.value(forKey: UIKeyboardFrameBeginUserInfoKey) as! NSValue
+        let keyboardSize: CGSize = value.cgRectValue.size
         
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.frame.origin.y  -= keyboardSize.height
         })
         
     }
     
     func keyboardWillHide(){
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.frame.origin.y  = 0.0
         })
     }

@@ -252,7 +252,7 @@
 					449F9ED61C6A45C400E2AEAD = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 3QCZR49TV4;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0830;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -484,7 +484,7 @@
 				PRODUCT_NAME = Seegnature;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = SeegnatureAppBridgingHeader.h;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 			};
@@ -516,7 +516,7 @@
 				PRODUCT_NAME = Seegnature;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = SeegnatureAppBridgingHeader.h;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 			};

@@ -37,7 +37,7 @@ class AppManager: NSObject {
     }
     
     // MARK: SDK methods
-    func handleSessionRequest(currentVC: UIViewController, sessionId: String, capabilities: [String: AnyObject], isRep: Bool = false, resources: Array<Dictionary<String, AnyObject>>?) {
+    func handleSessionRequest(_ currentVC: UIViewController, sessionId: String, capabilities: [String: AnyObject], isRep: Bool = false, resources: Array<Dictionary<String, AnyObject>>?) {
         
         let val = SeegnatureActions()
         showSpinner("Initializing session")
@@ -48,42 +48,42 @@ class AppManager: NSObject {
                 hideSpinner()
                 showAlert(currentVC, title: "Error", message: "Session id \(sessionId) not found")
             } else {
-                val.startSession(currentVC.view, dictionary: capabilities, isRep: isRep, resources: resources) {
-                    currentVC.navigationController?.navigationBarHidden = true
+                val.startSession(currentVC.view, dictionary: capabilities as NSDictionary, isRep: isRep, resources: resources) {
+                    currentVC.navigationController?.isNavigationBarHidden = true
                     hideSpinner()
                 }
             }
         }
     }
     
-    func cleanDictionaryNil(dictionary: NSDictionary) -> Dictionary<String, AnyObject>{
+    func cleanDictionaryNil(_ dictionary: NSDictionary) -> Dictionary<String, AnyObject>{
         var clean = dictionary as! Dictionary<String, AnyObject>
         for (key, value) in clean {
             if value as? String == nil {
                 if value as? NSNumber == nil{
-                    clean[key] = ""
+                    clean[key] = "" as AnyObject
                 }
             }
         }
         return clean
     }
 
-    func saveCredentials(username: String, password: String) {
-        NSUserDefaults.standardUserDefaults().setObject(["username": username, "password": password], forKey: "credentials")
-        NSUserDefaults.standardUserDefaults().synchronize()
+    func saveCredentials(_ username: String, password: String) {
+        UserDefaults.standard.set(["username": username, "password": password], forKey: "credentials")
+        UserDefaults.standard.synchronize()
     }
     
-    func saveUserData(userData: NSDictionary) -> Void{
-        NSUserDefaults.standardUserDefaults().setObject(userData["user"], forKey: DataType.User.rawValue)
+    func saveUserData(_ userData: NSDictionary) -> Void{
+        UserDefaults.standard.set(userData["user"], forKey: DataType.User.rawValue)
         var userInfo = userData as! Dictionary<String, AnyObject>
-        userInfo = cleanDictionaryNil(userInfo)
-        NSUserDefaults.standardUserDefaults().setObject(userInfo, forKey: DataType.Profile.rawValue)
-        NSUserDefaults.standardUserDefaults().synchronize()
+        userInfo = cleanDictionaryNil(userInfo as NSDictionary)
+        UserDefaults.standard.set(userInfo, forKey: DataType.Profile.rawValue)
+        UserDefaults.standard.synchronize()
     }
     
-    func getUserData(type:DataType) -> NSMutableDictionary{
-        let defaultUser = NSUserDefaults.standardUserDefaults()
-        if let userProfile : AnyObject = defaultUser.objectForKey(type.rawValue) {
+    func getUserData(_ type:DataType) -> NSMutableDictionary{
+        let defaultUser = UserDefaults.standard
+        if let userProfile : AnyObject = defaultUser.object(forKey: type.rawValue) as AnyObject {
             return userProfile as! NSMutableDictionary
         }
         return [:]
@@ -91,32 +91,32 @@ class AppManager: NSObject {
     
     func cleanUserData() -> Void{
 //        ViewUtils.profileImage = nil
-        let appDomain = NSBundle.mainBundle().bundleIdentifier
-        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
-        NSUserDefaults.standardUserDefaults().synchronize()
+        let appDomain = Bundle.main.bundleIdentifier
+        UserDefaults.standard.removePersistentDomain(forName: appDomain!)
+        UserDefaults.standard.synchronize()
     }
 
 }
 
-func slideInMenu (viewController: UIViewController){
-    let menuView = viewController.storyboard?.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+func slideInMenu (_ viewController: UIViewController){
+    let menuView = viewController.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
     
     let grayView = UIView()
-    grayView.frame = CGRectMake(0.0, 0.0, viewController.view.frame.width, viewController.view.frame.height)
-    grayView.backgroundColor = UIColor.blackColor()
+    grayView.frame = CGRect(x: 0.0, y: 0.0, width: viewController.view.frame.width, height: viewController.view.frame.height)
+    grayView.backgroundColor = UIColor.black
     grayView.alpha = 0.5
     
     
     menuView.previousViewController = viewController
     menuView.grayView = grayView
     menuView.view.frame.origin.x = -1 * menuView.view.frame.size.width
-    let parent = viewController.parentViewController
+    let parent = viewController.parent
     parent?.addChildViewController(menuView)
     parent?.view.addSubview(menuView.view)
     parent?.view.addSubview(grayView)
-    parent?.view.bringSubviewToFront(menuView.view)
+    parent?.view.bringSubview(toFront: menuView.view)
     menuView.view.alpha = 0.0
-    UIView.animateWithDuration(0.5, animations: { () -> Void in
+    UIView.animate(withDuration: 0.5, animations: { () -> Void in
         menuView.view.frame.origin.x = 0
         menuView.view.alpha = 1
         
@@ -127,7 +127,7 @@ func slideInMenu (viewController: UIViewController){
     func isConnectedToNetwork() -> Bool {
         
         var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
-        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)
         /*
         let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
@@ -155,10 +155,11 @@ func slideInMenu (viewController: UIViewController){
         return true
     }
     
-    func getDataFromUrl(urL:NSURL, completion: ((data: NSData?) -> Void)) {
-        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
-            completion(data: data)
-            }.resume()
+    func getDataFromUrl(_ urL:URL, completion: @escaping ((_ data: Data?) -> Void)) {
+        URLSession.shared.dataTask(with: urL, completionHandler: { (data, response, error) in
+            completion(data)
+            }) .resume()
     }
+    
 }
 

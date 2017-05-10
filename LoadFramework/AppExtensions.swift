@@ -9,32 +9,56 @@
 import Foundation
 import UIKit
 import SeegnatureSDK
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 extension UIView {
-    func borderView(borderWidth: CGFloat, borderColor: UIColor, borderRadius: CGFloat){
+    func borderView(_ borderWidth: CGFloat, borderColor: UIColor, borderRadius: CGFloat){
         self.layer.borderWidth = borderWidth
         self.layer.cornerRadius = borderRadius
         self.layer.cornerRadius = borderRadius
         self.clipsToBounds = true
-        self.layer.borderColor = borderColor.CGColor
+        self.layer.borderColor = borderColor.cgColor
     }
     
-    func roundView(borderWidth: CGFloat, borderColor: UIColor){
+    func roundView(_ borderWidth: CGFloat, borderColor: UIColor){
         let frame =  self.frame;
         self.layer.cornerRadius = frame.size.height / 2
         self.clipsToBounds = true
         self.layer.borderWidth = borderWidth;
-        self.layer.borderColor = borderColor.CGColor
+        self.layer.borderColor = borderColor.cgColor
     }
 }
 
-extension NSDate {
+extension Date {
     func convertToServerString() -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
-        dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
-        dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("yyyy-MM-dd'T'HH:mm:ss", options: 0, locale: nil)
-        let stringDate = dateFormatter.stringFromDate(self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy-MM-dd'T'HH:mm:ss", options: 0, locale: nil)
+        let stringDate = dateFormatter.string(from: self)
         return stringDate
         
     }
@@ -48,19 +72,19 @@ extension NSMutableData {
     ///
     /// - parameter string:       The string to be added to the `NSMutableData`.
     
-    func appendString(string: String) {
-        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        appendData(data!)
+    func appendString(_ string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
+        append(data!)
     }
 }
 
-extension NSURL {
+extension URL {
     func getKeyVals() -> Dictionary<String, String>? {
         var results = [String:String]()
-        let keyValues = self.query?.componentsSeparatedByString("&")
+        let keyValues = self.query?.components(separatedBy: "&")
         if keyValues?.count > 0 {
             for pair in keyValues! {
-                let kv = pair.componentsSeparatedByString("=")
+                let kv = pair.components(separatedBy: "=")
                 if kv.count > 1 {
                     results.updateValue(kv[1], forKey: kv[0])
                 }
@@ -74,15 +98,15 @@ extension NSURL {
 
 // MARK: public methods
 
-func getAttrText(string:String, color: UIColor, size: CGFloat) -> NSMutableAttributedString{
+func getAttrText(_ string:String, color: UIColor, size: CGFloat) -> NSMutableAttributedString{
     return getAttrText(string, color: color, size: size, fontName: "OpenSans")
 }
 
-func getAttrText(string:String, color: UIColor, size: CGFloat, fontName:String) -> NSMutableAttributedString{
+func getAttrText(_ string:String, color: UIColor, size: CGFloat, fontName:String) -> NSMutableAttributedString{
     return getAttrText(string, color: color, size: size, fontName: fontName, addShadow: false)
 }
 
-func getAttrText(string:String, color: UIColor, size: CGFloat, fontName:String, addShadow: Bool) -> NSMutableAttributedString{
+func getAttrText(_ string:String, color: UIColor, size: CGFloat, fontName:String, addShadow: Bool) -> NSMutableAttributedString{
     let str = NSMutableAttributedString(string: string)
     str.addAttribute(NSForegroundColorAttributeName,
         value: color,
@@ -91,39 +115,39 @@ func getAttrText(string:String, color: UIColor, size: CGFloat, fontName:String, 
     if (addShadow){
         let shadow = NSShadow()
         shadow.shadowBlurRadius = 5;
-        shadow.shadowColor = UIColor.whiteColor()
-        shadow.shadowOffset = CGSizeMake(0, 0)
+        shadow.shadowColor = UIColor.white
+        shadow.shadowOffset = CGSize(width: 0, height: 0)
         str.addAttributes([NSShadowAttributeName:shadow], range:  NSMakeRange(0,string.characters.count))
     }
     return str
 }
 
-func uicolorFromHex(rgbValue:UInt32)->UIColor{
+func uicolorFromHex(_ rgbValue:UInt32)->UIColor{
     let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
     let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
     let blue = CGFloat(rgbValue & 0xFF)/256.0
     return UIColor(red:red, green:green, blue:blue, alpha:1.0)
 }
 
-func showAlert(currentVC: UIViewController, title: String = "Error", message: String) {
+func showAlert(_ currentVC: UIViewController, title: String = "Error", message: String) {
     if let topVC = getTopViewController() {
         if topVC is UIAlertController {
             return
         } else {
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             
-            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action:UIAlertAction) in
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                 print("OK button pressed", terminator: "");
             }
             
             alertController.addAction(OKAction)
-            currentVC.presentViewController(alertController, animated: true, completion: nil)
+            currentVC.present(alertController, animated: true, completion: nil)
         }
     }
 }
 
 func getTopViewController() -> UIViewController? {
-    if var topController = UIApplication.sharedApplication().keyWindow?.rootViewController {
+    if var topController = UIApplication.shared.keyWindow?.rootViewController {
         while let presentedViewController = topController.presentedViewController {
             topController = presentedViewController
         }
@@ -135,70 +159,70 @@ func getTopViewController() -> UIViewController? {
     }
 }
 
-func getImageFile(id: NSNumber, completion: (result: UIImage) -> Void) -> Void{
+func getImageFile(_ id: NSNumber, completion: @escaping (_ result: UIImage) -> Void) -> Void{
     let seegnatureManager = SeegnatureActions()
     seegnatureManager.getFileFromURL(id, completion: { (result) -> Void in
-        if let url = NSURL(string: result as String){
-            if let data = NSData(contentsOfURL: url){
-                dispatch_async(dispatch_get_main_queue()){
+        if let url = URL(string: result as String){
+            if let data = try? Data(contentsOf: url){
+                DispatchQueue.main.async{
                     let image = UIImage(data: data)
-                    completion(result: image!)
+                    completion(image!)
                 }
             }
         }
     })
 }
 
-func showSpinner(text: String) {
-    dispatch_async(dispatch_get_main_queue()){
+func showSpinner(_ text: String) {
+    DispatchQueue.main.async{
         SwiftSpinner.show(text)
     }
 }
 
 func hideSpinner() {
-    dispatch_async(dispatch_get_main_queue()){
+    DispatchQueue.main.async{
         SwiftSpinner.hide()
     }
 }
 
-func setBordersForTextField(view: UIView, borderWidth: CGFloat) {
+func setBordersForTextField(_ view: UIView, borderWidth: CGFloat) {
     
     // top border
     let topBorder = CALayer()
-    topBorder.frame = CGRectMake(0.0, 0.0, view.frame.size.width, borderWidth)
-    topBorder.backgroundColor = uicolorFromHex(0x67CA94).CGColor
+    topBorder.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: borderWidth)
+    topBorder.backgroundColor = uicolorFromHex(0x67CA94).cgColor
     view.layer.addSublayer(topBorder)
     
 }
 
-func leftBorderView(view: UIView, borderWidth: CGFloat, borderColor: UIColor) -> CALayer {
+func leftBorderView(_ view: UIView, borderWidth: CGFloat, borderColor: UIColor) -> CALayer {
     let leftBorder = CALayer()
-    leftBorder.frame = CGRectMake(0.0, 0.0, borderWidth, view.frame.size.height);
-    leftBorder.backgroundColor = borderColor.CGColor
+    leftBorder.frame = CGRect(x: 0.0, y: 0.0, width: borderWidth, height: view.frame.size.height);
+    leftBorder.backgroundColor = borderColor.cgColor
     view.layer.addSublayer(leftBorder)
     return leftBorder
 }
 
-func rightBorderView(view: UIView, borderWidth: CGFloat, borderColor: UIColor) -> CALayer {
+func rightBorderView(_ view: UIView, borderWidth: CGFloat, borderColor: UIColor) -> CALayer {
     let leftBorder = CALayer()
-    leftBorder.frame = CGRectMake(view.frame.size.width-borderWidth, 0.0, borderWidth, view.frame.size.height);
-    leftBorder.backgroundColor = borderColor.CGColor
+    leftBorder.frame = CGRect(x: view.frame.size.width-borderWidth, y: 0.0, width: borderWidth, height: view.frame.size.height);
+    leftBorder.backgroundColor = borderColor.cgColor
     view.layer.addSublayer(leftBorder)
     return leftBorder
 }
 
-func bottomBorderView(view: UIView, borderWidth: CGFloat, borderColor: UIColor, offset: CGFloat) -> CALayer{
+func bottomBorderView(_ view: UIView, borderWidth: CGFloat, borderColor: UIColor, offset: CGFloat) -> CALayer{
     let bottomBorder = CALayer()
-    bottomBorder.frame = CGRectMake(0.0, view.frame.size.height + offset, view.frame.size.width, borderWidth)
-    bottomBorder.backgroundColor = borderColor.CGColor
+    bottomBorder.frame = CGRect(x: 0.0, y: view.frame.size.height + offset, width: view.frame.size.width, height: borderWidth)
+    bottomBorder.backgroundColor = borderColor.cgColor
     view.layer.addSublayer(bottomBorder)
     return bottomBorder
 }
 
-func topBorderView(view: UIView, borderWidth: CGFloat, borderColor: UIColor, offset: CGFloat) -> CALayer{
+func topBorderView(_ view: UIView, borderWidth: CGFloat, borderColor: UIColor, offset: CGFloat) -> CALayer{
     let topBorder = CALayer()
-    topBorder.frame = CGRectMake(0.0, 0.0 + offset, view.frame.size.width, borderWidth)
-    topBorder.backgroundColor = borderColor.CGColor
+    topBorder.frame = CGRect(x: 0.0, y: 0.0 + offset, width: view.frame.size.width, height: borderWidth)
+    topBorder.backgroundColor = borderColor.cgColor
     view.layer.addSublayer(topBorder)
     return topBorder
 }
